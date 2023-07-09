@@ -30,9 +30,6 @@
               <p>I am a PhD student at <a href="https://www.ri.cmu.edu/">Inria</a> in Rennes.
                 I work on unsupervised training of neural networks for motion analysis. I am part of <a href="https://team.inria.fr/serpico/">Serpico team</a> leaded by <a href="https://team.inria.fr/serpico/team-members/charles-kervrann-2/">Charles Kervrann</a>. My PhD advisor is <a href="https://team.inria.fr/serpico/team-members/patrick-bouthemy/">Patrick Bouthemy</a>.
               </p>
-
-               I have been involved in the deep learning field for a few years now. Prior to my Ph.D., I worked on genomics
-projects in the Mostafavi lab at UBC in Vancouver and as a freelance engineer on computer vision projects.
               <p>
                 From 2019 to 2020, I worked as a visiting scholar at <a href="https://www.ubc.ca/">University British Columbia</a> in  <a href="https://saramostafavi.github.io/">Mostafavi Lab</a> working on deep learning approach to interpret genomics data.
               </p>
@@ -68,10 +65,10 @@ projects in the Mostafavi lab at UBC in Vancouver and as a freelance engineer on
           {% for cat in post.categories %}
           {% if cat == 'research' %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px">
               <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <td style="padding:2.5%;width:50%;vertical-align:middle">
               <h3>{{post.title}}</h3>
               <br>
               {{post.authors}}
@@ -103,17 +100,71 @@ projects in the Mostafavi lab at UBC in Vancouver and as a freelance engineer on
           {% endfor %}
         </table>
 
-        <br>
-        <br>
-        <br>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Other Projects</h2>
-              <p> These include coursework, side projects and unpublished research work.
-              </p>
-            </td>
-          </tr>
+
+                <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+                  <tr>
+                    <td style="padding:2.5%;width:100%;vertical-align:middle">
+                      <h2>Other Projects</h2>
+                      <p> These include coursework, side projects and unpublished research work.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+                <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+                  {% for post in site.posts %}
+                  {% for cat in post.categories %}
+                  {% if cat != 'research' and cat != 'Intel' %}
+                  <tr>
+                    <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                      <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+                    </td>
+                    <td style="padding:2.5%;width:75%;vertical-align:middle">
+                      <h3>{{post.title}}</h3>
+                      <br>
+                      <em>{{post.categories}} {{post.course}}</em>
+                      <br>
+                      {{ post.date | date: "%Y-%m-%d" }}
+
+                      <br>
+                      {% if post.website %}
+                      <a href="{{post.website}}">website</a> /
+                      {% endif %}
+                      {% if post.paper %}
+                      <a href="{{post.paper}}">paper</a> /
+                      {% endif %}
+                      {% if post.patent %}
+                      <a href="{{post.patent}}">patent</a> /
+                      {% endif %}
+                      {% if post.patent2 %}
+                      <a href="{{post.patent2}}">patent #2</a> /
+                      {% endif %}
+                      {% if post.patent3 %}
+                      <a href="{{post.patent3}}">patent #3</a> /
+                      {% endif %}
+                      {% if post.video %}
+                      <a href="{{post.video}}">video</a> /
+                      {% endif %}
+                      {% if post.video2 %}
+                      <a href="{{post.video2}}">video #2</a> /
+                      {% endif %}
+                      {% if post.code %}
+                      <a href="{{post.code}}">code</a> /
+                      {% endif %}
+                      {% if post.poster %}
+                      <a href="{{post.poster}}">poster</a> /
+                      {% endif %}
+                      {% if post.slides %}
+                      <a href="{{post.slides}}">slides</a> /
+                      {% endif %}
+                      <p></p>
+                      {{ post.excerpt }}
+                    </td>
+                  </tr>
+                  {% endif %}
+                  {% endfor %}
+                  {% endfor %}
+                </table>
 
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
