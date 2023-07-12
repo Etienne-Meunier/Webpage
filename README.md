@@ -13,3 +13,13 @@ The website design is just a modification of [Jon Barron's website](https://jonb
 * I use thumbnails, so I can upload arbitrary sized images but then only display small ones. The `_make_thumbnails.sh` script generates them and the html template looks in `tn/` for all images. 
 * I have three categories of post with slightly differerent formatting, so changing sizing requires edits in multiple paces. 
 * If you use this, I'd appreciate a link back either to this repo or my personal website so others can find this too. 
+
+## Build
+* Install Ruby 
+* In your terminal `gem install bundler jekyll`
+* Now do `gem install bundler jekyll-sitemap`
+* Next try `jekyll serve` 
+* go to http://127.0.0.1:4000 
+* Your site is alive ! 
+
+* ctrl-c to kill him 
