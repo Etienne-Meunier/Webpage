@@ -1,6 +1,51 @@
 <!DOCTYPE HTML>
 <html lang="en">
 
+<!-- Add this CSS in the <head> section -->
+<style>
+    /* Styling for the image container */
+    .hover-article .image-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Default style for the image */
+    .hover-article .image-container img {
+      position: relative;
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    /* Styling for the image to be displayed on hover */
+    .hover-article .image-container .hover-image {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      object-fit: scale-down;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+
+    /* Show the image on hover */
+    .hover-article:hover .image-container .hover-image {
+      opacity: 1;
+    }
+
+    /* Hide the first image when the hover image is displayed */
+    .hover-article:hover .image-container img:not(.hover-image) {
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0s 0.3s;
+    }
+
+    /* Adjust the position of the hover image to align with the default image
+    .hover-article:hover .image-container .hover-image {
+        top: 0;
+        left: 0;*/
+    }
+</style>
 <head>
   <title>{{ site.name }}</title>
 
@@ -18,16 +63,16 @@
 
 
 <body>
-  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <table style="width:100%;max-width:900px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
     <tr style="padding:0px">
       <td style="padding:0px">
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr style="padding:0px">
-            <td style="padding:2.5%;width:60%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle">
               <h1>
-                Meunier Etienne
+                Etienne Meunier
               </h1>
-              <p>I am a PhD student at <a href="https://www.inria.fr/en">Inria</a> in Rennes.
+              <p>I've been a PhD student at <a href="https://www.inria.fr/en">Inria</a> in Rennes since September 2020, and I'm aiming to finish my program by early December 2023.
                 I work on unsupervised training of neural networks for motion analysis. I am part of <a href="https://team.inria.fr/serpico/">Serpico team</a> leaded by <a href="https://team.inria.fr/serpico/team-members/charles-kervrann-2/">Charles Kervrann</a>. My PhD advisor is <a href="https://team.inria.fr/serpico/team-members/patrick-bouthemy/">Patrick Bouthemy</a>.
               </p>
               <p>
@@ -40,40 +85,36 @@
                 I'm looking for a post-doctoral position starting from January 2024. I'm interested in computer vision and deep learning applications to various signals, and I'm open to new areas of research. I have a strong background in computer science and mathematics related to machine learning and am able to write functional software and understand cutting-edge papers in computer vision. Curious and hard-working, I'm ready to invest myself in discovering new subjects.
               </p>
               <p style="text-align:center">
-                etienne.meunier@inria.fr
+                etienne.meunier@inria.fr &nbsp;/&nbsp;
+                <a href="pdfs/Resume.pdf">CV</a> &nbsp;/&nbsp;
                 <a href="https://github.com/Etienne-Meunier-Inria">GitHub</a> &nbsp;/&nbsp;
                 <a href="https://scholar.google.com/citations?user=ncUk_hUAAAAJ&hl=en&oi=sra">Google Scholar</a> &nbsp;/&nbsp;
                 <a href="https://www.linkedin.com/in/etienne-meunier/"> LinkedIn </a>
               </p>
             </td>
-            <td style="padding:2.5%;width:40%;max-width:40%">
-              <img style="width:100%;max-width:100%" alt="profile photo" src="images/etiennem.jpeg">
+            <td style="padding:2.5%;width:30%;max-width:40%">
+              <img style="width:100%;max-width:100%" alt="profile photo" src="images/etiennem-round.png">
             </td>
           </tr>
         </table>
       </table>
 
         <div style="width:100%;max-width:1200px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Research</h2>
-              <p>
-                I'm interested in computer vision, machine learning, video analysis and unsupervised learning.
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            {% for post in site.posts %}
           {% for cat in post.categories %}
-          {% if cat == 'research' %}
-          <tr>
-            <td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px">
-              <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:50%;vertical-align:middle">
+            {% if cat == 'research' %}
+            <tr class="hover-article"> <!-- Add the class "hover-article" to the row -->
+             <td style="padding:2.5%;width:50%;vertical-align:middle;min-width:120px">
+               <!-- Wrap the images in a container with the class "image-container" -->
+               <div class="image-container">
+                 <!-- The default image (post.image) -->
+                 <img  class="project-image" src="{{ post.image }}" alt="project image" style="width: 100%;"/>
+                  <!-- Hover image (post.image2) -->
+                 <img class="hover-image" src="{{ post.image2 }}" alt="Hover Image" style="width: 100%;"/>
+               </div>
+              </td>
+              <td style="padding:2.5%;width:50%;vertical-align:middle">
               <h3>{{post.title}}</h3>
               <br>
               {{post.authors}}
@@ -179,13 +220,15 @@
             <td style="padding:0px">
               <br>
               <p style="text-align:center;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a>
+                Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a>.
               </p>
             </td>
           </tr>
         </table>
       </td>
     </tr>
+
+
 </body>
 
 </html>
